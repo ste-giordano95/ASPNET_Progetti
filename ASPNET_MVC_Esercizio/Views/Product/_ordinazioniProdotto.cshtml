@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ASPNET_MVC_Esercizio.Models.Order_Details_Extended>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id Ordine</th>
+            <th scope="col">Nome Prodotto</th>
+            <th scope="col">Prezzo</th>
+            <th scope="col">Sconto</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.OrderID</td>
+                <td>@item.ProductName</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.Discount</td>
+            </tr>
+
+        }
+    </tbody>
+</table>

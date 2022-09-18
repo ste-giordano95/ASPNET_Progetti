@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "ClientJQuery";
+}
+
+<h2>ClientJQuery</h2>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#btn_carica").click(function () {
+                $.ajax({
+                    url: "http://localhost:5738/api/Products",
+                    method: "GET",
+                    dataType: "JSON"
+                }).done(function (data) {
+                    $.each(data, function (key, item) {
+                        $("#target").append(item.ProductName);
+                    });
+                }).fail(function () {
+                    alert("errore");
+                });
+            });
+        });
+    </script>
+    }
+
+<h2>prova</h2>
+<input type="button" id="btn_carica" value="Carica Prodotti" />
+<div id="target"></div>

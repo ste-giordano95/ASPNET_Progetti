@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Join>;
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        debugger;
+        function PagerClick(index) {
+            document.getElementById("hfCurrentPageIndex").value = index;
+            document.forms[0].submit();
+        }
+    </script>
+}
+
+<h1>Join</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id Ordine</th>
+            <th scope="col">Data Ordine</th>
+            <th scope="col">Nome Compagnia</th>
+            <th scope="col">Città</th>
+            <th scope="col">Paese</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+                <td>@item.CompanyName</td>
+                <td>@item.City</td>
+                <td>@item.Country</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<br/>
+
+    <form asp-action="Index" asp-controller="Join" method="get">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+        @for (int i = 1; i <= ViewBag.pageCount; i++)
+                {
+                    
+                @if (i != ViewBag.CurrentPageIndex)
+                        {
+                    <li class="page-item">
+                            <a class="page-link" href="javascript:PagerClick(@i);">@i</a>
+                    </li>
+                        }
+                        else
+                        {
+                             <li class="page-item active">
+                        <a class="page-link" href="javascript:PagerClick(@i);">@i</a>
+                            </li>
+                        }
+                    
+                }
+        </ul>
+    </nav>
+        <input type="hidden" id="hfCurrentPageIndex" name="currentPageIndex"/>
+
+    </form>
+
+
+

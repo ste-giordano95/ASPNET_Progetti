@@ -1,0 +1,56 @@
+﻿<h1>DropDown</h1>
+
+@section scripts{
+
+    <script src="~/lib/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            callController()
+        })
+
+        $("#paeseSelezionato").change(function () {
+            callController()
+        });
+
+        $("#maxRowss").change(function () {
+            callController()
+        });
+
+        function PagerClick(index) {
+            callController(index)
+        }
+
+        function callController(index) {
+
+            var num;
+
+            if(index != null)
+                 num = index
+                 else
+                    num = 1;
+
+            var selectedSubject = $("#paeseSelezionato option:selected").text();
+            var selectedRows = $("#maxRowss option:selected").text();
+            $.ajax({
+                method: 'POST',
+                url: '@Url.Action("Index", "DropDown")',
+                data: { paese: selectedSubject, currentPageIndex: num, maxRows: selectedRows },
+                beforeSend: function () {
+                    console.log('firing ajax call');
+                },
+                success: function (result) {
+                    $('#testarea').html(result);
+                },
+                error: function (data) {
+                    $("#testarea").html("ERROR" + JSON.stringify(data));
+                }
+            });
+        }
+
+    </script>
+}
+    @Html.DropDownList("paeseSelezionato", new SelectList(ViewBag.ListaPaesi), "Paese")
+    @Html.DropDownList("maxRowss", new SelectList(ViewBag.MaxRows))
+
+<div id="testarea"></div>

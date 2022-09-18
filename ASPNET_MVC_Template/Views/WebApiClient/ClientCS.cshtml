@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "ClientCS";
+}
+
+<h2>Client web Api con c#</h2>
+<h3>Elenco Prodotti</h3>
+<ul>
+    @foreach (var item in ViewBag.Prodotti)
+    {
+        <li>@item.ProductName</li>
+    }
+</ul>

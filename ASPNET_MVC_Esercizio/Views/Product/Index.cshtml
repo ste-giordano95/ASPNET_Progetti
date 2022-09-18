@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    }
+
+<h2>Seleziona un Prodotto</h2>
+
+
+@using (Ajax.BeginForm("orderProduct", "Product", new AjaxOptions
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "target",
+    InsertionMode = InsertionMode.Replace
+}))
+{
+    @Html.DropDownList("productName", new SelectList(ViewBag.DropDown))
+    <input type="submit" value="Trova le ordinazioni" />
+}
+
+<div id="target"></div>

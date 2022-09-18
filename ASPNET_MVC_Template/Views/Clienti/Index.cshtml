@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ASPNET_MVC_Template.Models.Customers>
+
+@{
+    ViewBag.Title = "Elenco Clienti";
+}
+
+<h2>Elenco Clienti</h2>
+<hr />
+
+<ul class="list-group list-group-flush">
+    @foreach(var item in Model)
+            {
+                <li class="list-group-item" >@item.CompanyName</li>
+            }
+</ul>

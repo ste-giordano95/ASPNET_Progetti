@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    int n1, n2, risultato;
+    n1 = Request["txt4"].AsInt();
+    n2 = Request["txt5"].AsInt();
+    risultato = n1 + n2;
+}
+
+<script>
+    function Calcola() {
+        document.getElementById("txt3").value =
+            eval(document.getElementById("txt1").value) +
+            eval(document.getElementById("txt2").value)
+    }
+</script>
+
+<h1>Tre Calcolatrici</h1>
+<hr />
+<h3>Calcolatrice javascript</h3>
+<input type="text" id="txt1" />
+<input type="text" id="txt2" />
+<input type="button" value="CalcolaJS" onclick="Calcola()" />
+<br />
+<input type="text" id="txt3" />
+<hr />
+<h3>Calcolatrice Razor</h3>
+<form>
+    <input type="text" name="txt4" value="@n1" />
+    <input type="text" name="txt5" value="@n2" />
+    <input type="submit" value="CalcolaRazor" />
+    <br />
+    <input type="text" name="txt6" value="@risultato" />
+</form>
+<hr />
+<h3>Calcolatrice C#</h3>
+<form>
+    <input type="text" name="txt7" value="@n1" />
+    <input type="text" name="txt8" value="@n2" />
+    <input type="submit" value="CalcolaC#" />
+    <br />
+    <input type="text" name="txt9" value="@ViewBag.Risultato" />
+</form>

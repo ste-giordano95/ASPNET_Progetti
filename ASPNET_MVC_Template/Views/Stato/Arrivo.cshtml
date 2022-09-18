@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Arrivo";
+}
+
+<h1>Gestione dello stato in Session e Cache</h1>
+<h2>Arrivo</h2>
+
+<h3>Dati in Session</h3>
+<input type="text" value="@Session["SS"]" />
+
+<form method="post">
+    <input type="text" value="@ViewBag.Session" />
+    <h3>Dati in Cache</h3>
+    <input type="text" value="@ViewBag.Cache" />
+    <input type="submit" value="Mostra utilizzando l'action in post'" />
+</form>

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>Oggi è: @DateTime.Now.ToLongDateString()</p> @*Viene eseguito dal server (elabora la pagina, il codice anteposto dalla chiocciola lo risolve, html lo lascia invariato)*@
+
+<h4>Lista di numeri:</h4>
+
+<ul>
+    @for (int n = 1; n <= 10; n++)
+    {
+        <li>@(n + 10)</li>
+    }
+</ul>
+
+<input type="text" value="input by client" />
+
+@Html.TextBox("textbox1", "input by server")
+
+<a href="Calcolatrice/Index" />

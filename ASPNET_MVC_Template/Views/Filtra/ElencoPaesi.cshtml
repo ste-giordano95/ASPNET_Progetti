@@ -1,0 +1,59 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "ElencoPaesi";
+}
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#paesi').selectpicker();
+
+            $.ajax({
+                url: "/Filtra/ElencoClienti",
+                method: "GET",
+                contentType: 'application/html; charset=utf-8'
+            }).done(function (result) {
+                $('#target').html(result);
+
+            }).fail(function () {
+                $('#target').html("<h3>Errore</h3>")
+            });
+        });
+
+        $("#paesi").change(function () {
+            var selectedSubject = $("#paesi option:selected").text();
+            var urll = "/Filtra/ElencoClienti?paesi=" + selectedSubject;
+            debugger;
+            $.ajax({
+                url: urll,
+                method: "GET",
+                contentType: 'application/html; charset=utf-8'
+            }).done(function (result) {
+                $('#target').html(result);
+
+            }).fail(function () {
+                $('#target').html("<h3>Errore</h3>")
+            });
+        });
+    </script>
+}
+
+
+<h2>ElencoPaesi</h2>
+
+@*@using (Ajax.BeginForm("ElencoClienti", "Filtra", new AjaxOptions
+    {
+        HttpMethod = "Post",
+        UpdateTargetId = "target",
+        InsertionMode = InsertionMode.Replace
+    }))
+    {*@
+@Html.DropDownList("paesi", new SelectList(Model), new { @class = "selectpicker", data_live_search = "true" })
+@*<input type="submit" value="cerca" />*@
+@*}*@
+
+<div id="target"></div>

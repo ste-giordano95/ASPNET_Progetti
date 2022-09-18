@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ASPNET_MVC_Core.Models.Product>
+
+
+@section scripts{
+
+    <script>
+        $("#name").change(function () {
+            var selectedSubject = $("#name option:selected").text();
+            var urll = "/Product/Index?name=" + selectedSubject;
+            window.location.replace(urll);
+        });
+    </script>
+}
+
+
+@Html.DropDownList("name", new SelectList(ViewBag.ElementDropDown))
+
+
+
+@foreach(var item in Model){
+    <h2>@item.ProductName</h2>
+    <br />
+    <h2>@item.UnitPrice</h2>
+}
