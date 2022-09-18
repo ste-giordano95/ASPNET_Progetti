@@ -2,7 +2,7 @@
 
 @section scripts{
 
-    <script src="~/lib/jquery.unobtrusive-ajax.min.js"></script>
+@*    <script src="~/lib/jquery.unobtrusive-ajax.min.js"></script>*@
 
     <script>
         $(document).ready(function(){
@@ -50,7 +50,7 @@
 
     </script>
 }
-    @Html.DropDownList("paeseSelezionato", new SelectList(ViewBag.ListaPaesi), "Paese")
-    @Html.DropDownList("maxRowss", new SelectList(ViewBag.MaxRows))
+    @Html.DropDownList("paeseSelezionato", new SelectList(ViewBag.ListaPaesi), "Paese", new { @class="btn btn-secondary dropdown-toggle" })
+    @Html.DropDownList("maxRowss", new SelectList(ViewBag.MaxRows), new { @class="btn btn-secondary dropdown-toggle" })
 
 <div id="testarea"></div>

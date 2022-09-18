@@ -15,7 +15,7 @@ namespace ASPNET_MVC_Core.Controllers
 
         public IActionResult Index()
         {
-            List<int> rows = new List<int> { 5, 10, 20 };
+            List<int> rows = new List<int> { 2, 5, 10, 20 };
             ViewBag.ListaPaesi = db.Customers.Select(c => c.Country).Distinct();
             ViewBag.MaxRows = rows;
             return View();
