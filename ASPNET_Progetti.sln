@@ -15,6 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPNET_MVC_Core", "ASPNET_M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{ECA07F8C-D79B-40CE-AD76-3D9831EC40BC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{C11EC54E-6FAB-4D02-AFC9-7C649CCCD21C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Downloads\Northwind.sql = ..\..\..\..\Downloads\Northwind.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
